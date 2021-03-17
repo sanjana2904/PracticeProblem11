@@ -49,7 +49,19 @@ namespace PracticeProblem11
             return result;
         }
 
-            static void Main(string[] args)
+
+        public bool validateUppercase(string uppercase)
+        {
+            string pattern = @"^(?=.*[A-Z]).{8,}$";
+            bool result = Regex.IsMatch(uppercase, pattern);
+            if (!result)
+            {
+                throw new UserException("Uppercase Name Validation Failed");
+            }
+            return result;
+        }
+
+        static void Main(string[] args)
         {
             Console.WriteLine("Welcome to User Registration Problem");
             Console.WriteLine("Welcome to unit testing of user registration");
@@ -92,10 +104,20 @@ namespace PracticeProblem11
                 Console.WriteLine("Exception caught in Password");
             }
 
+            try
+            {
+                result = program.validateUppercase("sanJanaks");
+            }
+            catch (UserException)
+            {
+                Console.WriteLine("Exception caught in Uppercase");
+            }
+
             Console.WriteLine("First name validation result: " + result);
             Console.WriteLine("Email name validation result: " + result);
             Console.WriteLine("Phone Number validation result: " + result);
             Console.WriteLine("Password validation result: " + result);
+            Console.WriteLine("Uppercase validation result: " + result);
         }
     }
 }
