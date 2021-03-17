@@ -27,6 +27,17 @@ namespace PracticeProblem11
             return result;
         }
 
+        public bool validatePhoneNumber(string number)
+        {
+            string pattern = @"^\d{2}\s\d{10}$";
+            bool result = Regex.IsMatch(number, pattern);
+            if (!result)
+            {
+                throw new UserException("Email Name Validation Failed");
+            }
+            return result;
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to User Registration Problem");
@@ -52,8 +63,18 @@ namespace PracticeProblem11
                 Console.WriteLine("Exception caught in Email");
             }
 
+            try
+            {
+                result = program.validatePhoneNumber("91 7708796223");
+            }
+            catch (UserException)
+            {
+                Console.WriteLine("Exception caught in Phone Number");
+            }
+
             Console.WriteLine("First name validation result: " + result);
             Console.WriteLine("Email name validation result: " + result);
+            Console.WriteLine("Phone Number validation result: " + result);
         }
     }
 }
