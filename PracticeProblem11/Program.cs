@@ -33,12 +33,23 @@ namespace PracticeProblem11
             bool result = Regex.IsMatch(number, pattern);
             if (!result)
             {
-                throw new UserException("Email Name Validation Failed");
+                throw new UserException("Phone Number Name Validation Failed");
             }
             return result;
         }
 
-        static void Main(string[] args)
+        public bool validatePassword(string password)
+        {
+            string pattern = @"^.{8,}$";
+            bool result = Regex.IsMatch(password, pattern);
+            if (!result)
+            {
+                throw new UserException("Password Name Validation Failed");
+            }
+            return result;
+        }
+
+            static void Main(string[] args)
         {
             Console.WriteLine("Welcome to User Registration Problem");
             Console.WriteLine("Welcome to unit testing of user registration");
@@ -65,16 +76,26 @@ namespace PracticeProblem11
 
             try
             {
-                result = program.validatePhoneNumber("91 7708796223");
+                result = program.validatePhoneNumber("7708796223");
             }
             catch (UserException)
             {
                 Console.WriteLine("Exception caught in Phone Number");
             }
 
+            try
+            {
+                result = program.validatePassword("sanjanaks");
+            }
+            catch (UserException)
+            {
+                Console.WriteLine("Exception caught in Password");
+            }
+
             Console.WriteLine("First name validation result: " + result);
             Console.WriteLine("Email name validation result: " + result);
             Console.WriteLine("Phone Number validation result: " + result);
+            Console.WriteLine("Password validation result: " + result);
         }
     }
 }

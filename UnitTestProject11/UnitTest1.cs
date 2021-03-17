@@ -50,5 +50,20 @@ namespace UnitTestProject11
             bool result = program.validatePhoneNumber("917708796223");
             Assert.AreEqual(false, result);
         }
+        [TestMethod]
+        public void TestValidPassword()
+        {
+            Program program = new Program();
+            bool result = program.validatePassword("sanjanaks");
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void TestInValidPassword()
+        {
+            Program program = new Program();
+            bool result = program.validatePassword("sanjana");
+            Assert.AreEqual(false, result);
+        }
     }
 }
